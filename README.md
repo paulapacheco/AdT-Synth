@@ -14,16 +14,6 @@ Es posible generar datos sintéticos resistentes a ataques maliciosos para ident
 -Técnicas relevantes para aplicar
 
 -Referencias
-Survey of Post-OCR Processing Approaches
-CTRL
-Synthetically generated text for supervised text analysis: Teorico
-Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe: DP finetuneando GPT2, usando CTRL tambien
-Differentially Private Synthetic Data via Foundation Model APIs 2: Text: DP con PE (Private Evolution) ‘Prompteado Privado’ si es que esiste eso con GPT3.5
-Privacy-Preserving Instructions for Aligning Large Language Models: DP finetuneando Llama
-Private prediction for large-scale synthetic text generation: DP con PP (Private Prediction) en Gemma
-Fine-Tuning Language Models with Just Forward Passes
-Reading and Categorizing Scanned Documents using Deep Learning
-https://arxiv.org/pdf/2302.00539
 
 
 -Planificación
