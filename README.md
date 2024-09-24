@@ -1,4 +1,4 @@
-Generación de datos sintéticos a partir de documentos del Archivo del Terror.
+***Generación de datos sintéticos a partir de documentos del Archivo del Terror.***
 
 - Resumen
 A partir de archivos que tienen datos protegidos generar nuevos archivos que preserven las propiedades de los documentos originales sin poner en riesgo a las personas afectadas, para que aquellos que no tienen acceso a los datos originales puedan realizar pruebas y desarrollar herramientas relacionadas con este tipo de documentos sin comprometer la seguridad de la información.
