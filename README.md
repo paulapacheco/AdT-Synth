@@ -13,8 +13,17 @@ A partir de archivos que tienen datos protegidos generar nuevos archivos que pre
 
 
 ## Técnicas relevantes para aplicar
+- Post-procesado de OCR
+- Procesado del texto (dividir, spellcheck)
+- Identificacion de informacion privada (PII) con [piiranha](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information?text=27+de+Abril+al+2000)
+- Finetune (no privado) a algun dataset cercano al de nustro interes. 
+- [aug-pe](https://github.com/AI-secure/aug-pe) adaptado para algun modelo de lenguaje en español
+- 
 
 ## Referencia
+- [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
+- [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
+-
 
 
 ## Planificación
