@@ -9,9 +9,9 @@ A partir de archivos que tienen datos protegidos generar nuevos archivos que pre
 3. Es posible generar datos sintéticos resistentes a ataques maliciosos para identificar a las víctimas.
 
 ## Objetivos preliminares
--Generación de Datos Sintéticos: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
--Resistencia a ataques maliciosos: Diseñar datos sintéticos que sean resistentes a ataques maliciosos.
--Validación de Resultados: Establecer un protocolo para evaluar la efectividad de los datos sintéticos en la investigación.
+- Generación de Datos Sintéticos: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
+- Resistencia a ataques maliciosos: Diseñar datos sintéticos que sean resistentes a ataques maliciosos.
+- Validación de Resultados: Establecer un protocolo para evaluar la efectividad de los datos sintéticos en la investigación.
 
 ## Técnicas relevantes para aplicar
 - Post-procesado de OCR posiblemente con [OCRonos](https://huggingface.co/PleIAs/OCRonos)
