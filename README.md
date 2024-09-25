@@ -15,7 +15,7 @@ A partir de archivos que tienen datos protegidos generar nuevos archivos que pre
 ## Técnicas relevantes para aplicar
 - Post-procesado de OCR posiblemente con [OCRonos](https://huggingface.co/PleIAs/OCRonos)
 - Procesado del texto (splitting, spellchecking)
-- Identificacion de informacion privada (PII) con [piiranha](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information?text=27+de+Abril+al+2000)
+- Identificacion de informacion privada (***PII***) con [piiranha](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information?text=27+de+Abril+al+2000)
 - Finetune (no privado) a algun dataset 'cercano' al de nustro interes. 
 - [aug-pe](https://github.com/AI-secure/aug-pe) adaptado para algun modelo de lenguaje (abierto) en español
 - 
