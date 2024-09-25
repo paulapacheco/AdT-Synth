@@ -1,14 +1,15 @@
-# Generación de datos sintéticos a partir de documentos del Archivo del Terror.***
+# Generación de datos sintéticos a partir de documentos del Archivo del Terror
 
 ## Resumen
 A partir de archivos que tienen datos protegidos generar nuevos archivos que preserven las propiedades de los documentos originales sin poner en riesgo a las personas afectadas, para que aquellos que no tienen acceso a los datos originales puedan realizar pruebas y desarrollar herramientas relacionadas con este tipo de documentos sin comprometer la seguridad de la información.
 
 ## Hipótesis de trabajo
-Desarrollar estos datos sintéticos basados en el Archivo del Terror de Uruguay, con la hipótesis de que este corpus es comparable al archivo de la memoria de Argentina, y por lo tanto, las herramientas que sean desarrolladas pueden aplicarse a este dataset.
-Es posible generar nuevos documentos manteniendo la distribución de los documentos originales. Estas propiedades son por ejemplo, la distribución de palabras, la distribución de entidades nombradas, la distribución sobre la estructura del documento, etc.
-Es posible generar datos sintéticos resistentes a ataques maliciosos para identificar a las víctimas.
+1. Desarrollar estos datos sintéticos basados en el Archivo del Terror de Uruguay, con la hipótesis de que este corpus es comparable al archivo de la memoria de Argentina, y por lo tanto, las herramientas que sean desarrolladas pueden aplicarse a este dataset.
+2. Es posible generar nuevos documentos manteniendo la distribución de los documentos originales. Estas propiedades son por ejemplo, la distribución de palabras, la distribución de entidades nombradas, la distribución sobre la estructura del documento, etc.
+3. Es posible generar datos sintéticos resistentes a ataques maliciosos para identificar a las víctimas.
 
 ## Objetivos preliminares
+
 
 
 ## Técnicas relevantes para aplicar
