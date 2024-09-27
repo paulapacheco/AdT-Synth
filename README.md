@@ -22,6 +22,7 @@ A partir de archivos que tienen datos protegidos generar nuevos archivos que pre
  
 
 ## Referencia
+- [Training transformer models with differential privacy](https://github.com/microsoft/dp-transformers/tree/main/research/synthetic-text-generation-with-DP)
 - [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
 - [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 - [Synthetically generated text for supervised text analysis](https://drive.google.com/open?id=105fOMEQiZ9p0oq6BsIP1eHgIkv3aSV5h&usp=drive_fs)
