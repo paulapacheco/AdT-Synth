@@ -17,16 +17,17 @@ A partir de archivos que tienen datos protegidos generar nuevos archivos que pre
 - Post-procesado de OCR posiblemente con [OCRonos](https://huggingface.co/PleIAs/OCRonos)
 - Procesado del texto (splitting, spellchecking)
 - Identificacion de informacion privada (***PII***) con [piiranha](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information?text=27+de+Abril+al+2000)
-- Finetune (no privado) a algun dataset 'cercano' al de nustro interes. 
+- Finetune (no privado) a algun dataset 'cercano' al de nustro interes.
+- Finetune con DP (Differential Privacy/ Privacidad Diferencial) usando Opacus para el SGD con DP 
 - [aug-pe](https://github.com/AI-secure/aug-pe) adaptado para algun modelo de lenguaje (abierto) en español
  
 
 ## Referencia
-- [Training transformer models with differential privacy](https://github.com/microsoft/dp-transformers/tree/main/research/synthetic-text-generation-with-DP)
-- [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
+- [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://drive.google.com/file/d/11SF0GMG5nNHbd-dxt_hCn5Y-JhtAJFOq/view)
+- [Repo de finetune con y sin DP](https://github.com/microsoft/dp-transformers/tree/main/research/fine_tune_llm_w_qlora)
 - [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 - [Synthetically generated text for supervised text analysis](https://drive.google.com/open?id=105fOMEQiZ9p0oq6BsIP1eHgIkv3aSV5h&usp=drive_fs)
-
+- [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
 
 ## Planificación
 
