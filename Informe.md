@@ -20,7 +20,8 @@ En general, los archivos de la última dictadura militar están protegidos debid
 
 ## Metodologia y Problemas
 
-El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datasets con datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público. 
+El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público. 
+El mismo se encuentra en Archive.org. Este proyecto estuvo caído durante gran parte de nuestro proyecto debido a ciberataques, lo que también nos generó dificultades en distintas etapas.
 
 
 Los dos caminos a seguir fueron:
