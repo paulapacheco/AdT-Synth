@@ -1,7 +1,7 @@
 # Generación de datos sintéticos a partir de documentos del Archivo del Terror
 
 ## Resumen
-A partir de archivos que tienen datos protegidos generar nuevos archivos que preserven las propiedades de los documentos originales sin poner en riesgo a las personas afectadas, para que aquellos que no tienen acceso a los datos originales puedan realizar pruebas y desarrollar herramientas relacionadas con este tipo de documentos sin comprometer la seguridad de la información.
+A partir de archivos que tienen datos protegidos explorar la generación(generar) nuevos archivos que preserven las propiedades de los documentos originales sin poner en riesgo a las personas afectadas, para que aquellos que no tienen acceso a los datos originales puedan realizar pruebas y desarrollar herramientas relacionadas con este tipo de documentos sin comprometer la seguridad de la información.
 
 En general, los archivos de la última dictadura militar están protegidos debido a que contienen inofrmación sensible de las víctimas. Nosotros elegimos trabajar con datos del Archivo del Terror de Uruguay, dicho dataset actualmente es público.
 
@@ -62,7 +62,7 @@ La generación de datos sintéticos no resutlto fructífera con ninguno de los m
 
 - Semana del 28 de octubre al 4 de noviembre: Finalización del repositorio, asegurando su presentación de manera adecuada, y preparación de la presentación final del proyecto. []
 
-# Planificación actualizada 
+### Planificación actualizada 
 
 - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun corpus en ingles
 - Generar textos sinteticos a partir de un solo texto privado suficientemente [lindo para ver de cerca] la generación
