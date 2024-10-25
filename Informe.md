@@ -91,5 +91,17 @@ La generación de datos sintéticos no resutlto fructífera con ninguno de los m
 
 ## Trabajo a futuro
 
-Obviamente el principal trabajo a futuro sería poder generar los datos sintéticos, pues fue el objetivo inicial de este proyecto. 
-Para eso  necesitariamos un mayor poder de computo, y explorariamos otras modelos existentes 
+El principal plan a futuro es la generación de datos sintéticos, que fue la meta inicial de este proyecto. Para lograrlo, necesitaremos un mayor poder computacional y exploraremos otros modelos disponibles. 
+
+Para esto, planteamos otros posibles trabajos que nos podrían ayudarnos a llegar a ese objetivo.
+- Entender el rango de archivos.
+- Investigar métodos más efectivos para la separación de datos.
+- Explorar la herramienta Opacus.
+- Realizar finetuning a un modelo más reciente para instrucciones en español.
+- Probar la generación de datos con modelos cerrados como GPT 3.5.
+- Variar y mejorar los prompts utilizados.
+- Una vez generados los datos, identificar entidades.
+- Diseñar correctamente un mecanismo de detección de combinaciones prohibidas.
+- Llevar a cabo una evaluación downstream intermedia en BERT, basándonos en el paper.
+- Performar ataques maliciosos de reidentificación para evaluar la efectividad del modelo.
+- Investigar la aplicabilidad del modelo a otros datasets del mismo dominio.
