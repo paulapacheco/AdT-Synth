@@ -24,10 +24,31 @@ El primer problema que nos encontramos fue el hecho de conseguir los datos. Al t
 El mismo se encuentra en Archive.org. Este proyecto estuvo caído durante gran parte de nuestro proyecto debido a ciberataques, lo que también nos generó dificultades en distintas etapas.
 
 
-Los dos caminos a seguir fueron:
-- Fine-Tune de un modelo de lenguaje con Privacida Diferencial (Differential Privacy): Guiandonos por el paper...
-- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper ... split clean
+## Hipótesis de trabajo
+1. Es posible generar nuevos documentos sinteticos que manteniendo la distribución de los documentos originales y tampoco vulneren su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
+2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
+## Metodologia y Problemas
+
+El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público. 
+El mismo se encuentra en Archive.org. Este proyecto estuvo caído durante gran parte de nuestro proyecto debido a ciberataques, lo que también nos generó dificultades en distintas etapas.
+
+### Seleccion de Textos
+En el
+
+### Privacidad Diferencial
+Un concepto relevante para la privacidad es el de Privacidad Diferencial
+
+### "Generación"
+Los dos caminos a seguir fueron:
+- Fine-Tune de un modelo de lenguaje con Privacida Diferencial (Differential Privacy): Guiandonos por el articulo [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348) la idea era adaptar la libreria asociada [dp-transformers](https://github.com/microsoft/dp-transformers) para propociar el finetune con QLoRa y privacidad diferencial de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintèticos semejantes. Resulto imposible no solo imposible la adaptación por dificultades en la integración de la libreria [Opacus](https://opacus.ai/), encargada de dotar la privacidad en el pipeline, con QLora. Sino también, dado el caso de una correcta adaptación, los recursos disponibles (contando CCAD) son insuficientes para poder levarlo a cabo. En el repositorrio reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
+- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper el metodo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) buscamos adpatar su respectiva libreria [aug-pe](https://github.com/AI-secure/aug-pe) desarrollada para los datos de Yelp, OpenReview y PubMed, consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos mas bien largos sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen por ejemplo calificaciones.
+La idea del metodo de evolución privada desarrollada en el articulo, se basa de tres componentes fundaentales:
+	- Samplin
+	- Histrograma
+	- Varaition
+
+y a diferencia del finetune no requiere que accedamos directamente a los modelos de lenguaje, de igual manera el costo alto que puede conllevar realizar el finetune con DP de un modelo grande como Llama, resulta mas eficiente utilizar PE.  
 
 
 
