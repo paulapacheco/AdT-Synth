@@ -18,11 +18,6 @@ En general, los archivos de la última dictadura militar están protegidos debid
 
   Los ultimos objetivos resultan imposibles dado que el aterior resulto abandonado. 
 
-## Metodologia y Problemas
-
-El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público. 
-El mismo se encuentra en Archive.org. Este proyecto estuvo caído durante gran parte de nuestro proyecto debido a ciberataques, lo que también nos generó dificultades en distintas etapas.
-
 
 ## Hipótesis de trabajo
 1. Es posible generar nuevos documentos sinteticos que manteniendo la distribución de los documentos originales y tampoco vulneren su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
@@ -71,23 +66,25 @@ La generación de datos sintéticos no resutlto fructífera con ninguno de los m
 
 ## Planificación
 
-- Semana del 23 al 29 de septiembre: Preparación del entorno de trabajo y adaptación al mismo. Continuación en la revisión de documentos académicos y repositorios útiles. [Completada]
+- Semana del 23 al 29 de septiembre: Preparación del entorno de trabajo y adaptación al mismo. Continuación en la revisión de documentos académicos y repositorios útiles. _[Completada]_
 
-- Semana del 30 de septiembre al 6 de octubre: Adaptación de repositorios relevantes para nuestro problema de interés. Modificación del conjunto de datos para optimizar su adecuación a los fines del proyecto. [Completada]
+- Semana del 30 de septiembre al 6 de octubre: Adaptación de repositorios relevantes para nuestro problema de interés. Modificación del conjunto de datos para optimizar su adecuación a los fines del proyecto. _[Completada]_
 
-- Semana del 7 al 13 de octubre: Inicio de pruebas preliminares utilizando el modelo GPT-2. Estas pruebas serán breves y de corta duración, además de investigar métodos para la evaluación de los resultados obtenidos. [Completada sin éxito]. Si bien realizamos estas pruebas preliminares, GPT-2 no resultó útil para nuestro propósito. 
+- Semana del 7 al 13 de octubre: Inicio de pruebas preliminares utilizando el modelo GPT-2. Estas pruebas serán breves y de corta duración, además de investigar métodos para la evaluación de los resultados obtenidos. _[Completada sin éxito]_. Si bien realizamos estas pruebas preliminares, GPT-2 no resultó útil para nuestro propósito. 
 
-- Semana del 14 al 20 de octubre: Continuación de las pruebas, con la posibilidad de explorar otros modelos de lenguaje abiertos, preferentemente aquellos más grandes o recientes, y comparación de los resultados obtenidos. [Completada sin éxito] Adapatamos los dos modelos mencionados anteriormente en la metodología. Si bien exploramos diversos modelos de lenguajes, antes mencionados, no obtuvimos resultados favorables.
+- Semana del 14 al 20 de octubre: Continuación de las pruebas, con la posibilidad de explorar otros modelos de lenguaje abiertos, preferentemente aquellos más grandes o recientes, y comparación de los resultados obtenidos. _[Completada sin éxito]_. Adapatamos los dos modelos mencionados anteriormente en la metodología. Si bien exploramos diversos modelos de lenguajes, antes mencionados, no obtuvimos resultados favorables.
 
-- Semana del 21 al 27 de octubre: Continuación de las pruebas y realización de una evaluación exhaustiva, así como la preparación del informe correspondiente. [No pudimos realizar la evaluación debido a que no obtuvimos resultados favorables]
+- Semana del 21 al 27 de octubre: Continuación de las pruebas y realización de una evaluación exhaustiva, así como la preparación del informe correspondiente. _[No pudimos realizar la evaluación debido a que no obtuvimos resultados favorables]_.
 
-- Semana del 28 de octubre al 4 de noviembre: Finalización del repositorio, asegurando su presentación de manera adecuada, y preparación de la presentación final del proyecto. []
+- Semana del 28 de octubre al 4 de noviembre: Finalización del repositorio, asegurando su presentación de manera adecuada, y preparación de la presentación final del proyecto. _[En curso]_.
 
 ### Planificación actualizada 
 
-- Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun corpus en ingles
-- Generar textos sinteticos a partir de un solo texto privado suficientemente [lindo para ver de cerca] la generación
-- Ver el impacto de aumentar la cantidad de samples generados para la calidad de los datos siteticos. Usando el CCAD.
+Durante las próximas semanas, además de preparar el informe final y la presentación como está planificado, realizaremos algunas modificaciones a lo planeado, como:
+
+- Investigar la efectividad de aug-pe, detallado en la sección de metodología, en un corpus en inglés.
+- Generar textos sinteticos a partir de un único texto privado que sea lo suficientemente bueno para examinar de cerca el proceso de generación.
+- Analizar cómo afecta el incremento en la cantidad de muestras generadas a la calidad de los datos sintéticos, utilizando el CCAD.
 
 ## Trabajo a futuro
 
