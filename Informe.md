@@ -3,6 +3,8 @@
 ## Resumen
 A partir de archivos que tienen datos protegidos generar nuevos archivos que preserven las propiedades de los documentos originales sin poner en riesgo a las personas afectadas, para que aquellos que no tienen acceso a los datos originales puedan realizar pruebas y desarrollar herramientas relacionadas con este tipo de documentos sin comprometer la seguridad de la información.
 
+En general, los archivos de la última dictadura militar están protegidos debido a que contienen inofrmación sensible de las víctimas. Nosotros elegimos trabajar con datos del Archivo del Terror de Uruguay, dicho dataset actualmente es público.
+
 ## Objetivos preliminares y revisión:
 - Generación de Datos Sintéticos: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
 
@@ -17,6 +19,10 @@ A partir de archivos que tienen datos protegidos generar nuevos archivos que pre
   Los ultimos objetivos resultan imposibles dado que el aterior resulto abandonado. 
 
 ## Metodologia y Problemas
+
+El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datasets con datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público. 
+
+
 Los dos caminos a seguir fueron:
 - Fine-Tune de un modelo de lenguaje con Privacida Diferencial (Differential Privacy): Guiandonos por el paper...
 - Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper ... split clean
@@ -24,7 +30,7 @@ Los dos caminos a seguir fueron:
 
 
 
-La generación de datos sintéticos no resutlto fructifera con ninguno de los metodos empleados.
+La generación de datos sintéticos no resutlto fructífera con ninguno de los metodos empleados.
 
 ## Hipótesis de trabajo
 1. El corpus del Archivo del Terro es comparable al archivo de la memoria de Argentina, y por lo tanto, las herramientas que sean desarrolladas pueden aplicarse a este dataset.
