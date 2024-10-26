@@ -5,6 +5,10 @@ A partir de archivos que tienen datos protegidos explorar la generación(generar
 
 En general, los archivos de la última dictadura militar están protegidos debido a que contienen inofrmación sensible de las víctimas. Nosotros elegimos trabajar con datos del Archivo del Terror de Uruguay, dicho dataset actualmente es público.
 
+## Hipótesis de trabajo
+1. Es posible generar nuevos documentos sinteticos manteniendo la distribución de los documentos originales sin dejar de vulnerar su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
+2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
+
 ## Objetivos preliminares y revisión:
 - Generación de Datos Sintéticos: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
 
@@ -18,10 +22,6 @@ En general, los archivos de la última dictadura militar están protegidos debid
 
   Los ultimos objetivos resultan imposibles dado que el aterior resulto abandonado. 
 
-
-## Hipótesis de trabajo
-1. Es posible generar nuevos documentos sinteticos que manteniendo la distribución de los documentos originales y tampoco vulneren su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
-2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
 ## Metodologia y Problemas
 
@@ -98,7 +98,6 @@ La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, s
 - [dp-transformers](https://github.com/microsoft/dp-transformers)
 - [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
 - [aug-pe](https://github.com/AI-secure/aug-pe)
-- [Synthetically generated text for supervised text analysis](https://drive.google.com/open?id=105fOMEQiZ9p0oq6BsIP1eHgIkv3aSV5h&usp=drive_fs)
 - [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 
 ## Planificación
