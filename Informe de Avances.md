@@ -41,6 +41,7 @@ Decidimos enfocarnos solo en los rollos (19) dedicados a informes privados para 
 
 ### Privacidad Diferencial
 Para asegura que ciertos métodos cumplan con alguna garantía de privacidad es nos guiamos por un concepto fundamental, ya aceptado como un estandard, la Privacidad Diferencial (**DP**). La formulación matemática es la siguiente:
+
 Un algorito randomizado $M:\mathcal D\to \mathcal S$ es $(\epsilon,\delta)$ ***- diferencialmente privado*** si dados dos datasets $D, D'\in \mathcal D$ adjacentes (se diferencin en una muestra) para todo $S\in \mathcal S$ se cumple que 
 
 $$P(M(D)\in S)\leq e^\epsilon P(M(D')\in S) + \delta$$
