@@ -25,29 +25,66 @@ En general, los archivos de la última dictadura militar están protegidos debid
 
 ## Metodologia y Problemas
 
-El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público. 
-El mismo se encuentra en Archive.org. Este proyecto estuvo caído durante gran parte de nuestro proyecto debido a ciberataques, lo que también nos generó dificultades en distintas etapas.
+El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público ubicado en  Archive.org.  
+
+En las ultimas semanas, cuando finalmente logramos hacer aveces en la prooducción, la pagina estuvo caída proyecto debido a ciberataques, por ende perdimos el acceso a los pdf correspondientes a cada texto del OCR. Los pdf nos servian de referencia para entender el procesamiento de los textos crudos, que en partes pueden resultar ininteligibles, por suerte la idea general ya la obtuvimos antes de que perdamos el acceso.
 
 ### Seleccion de Textos
-En el
+Dentrro del Archivo del Terror hay multiples rollos a documentos de la dicatadura en Uruguay. Entre ellos hay distintos tipos de contenido como:
+- Listas de personas ionvestigadas
+- Archivos de grafica (noticias/revistas)
+- Transcripciones de informe privados sobre vecinos o conocidos sospechosos.
+
+Decidimos enfocarnos solo en los rollos (19) dedicados a informes privados para la generación de textos. Descartamos las listas de nombres por ser pobres para una generacion de textos. Dejamos de lado también otro tipo de rollos por ser muy diversos no solo en estrucutura sino también en contenido. Los rollos de informes solo poseen la trascripcion junto a un membrete al inicio de cada agente infomante.
 
 ### Privacidad Diferencial
-Un concepto relevante para la privacidad es el de Privacidad Diferencial
+Para asegura que ciertos métodos cumplan con alguna garantía de privacidad es nos guiamos por un concepto fundamental, ya aceptado como un estandard, la Privacidad Diferencial (**DP**). La formulación matemática es la siguiente:
+Un algorito randomizado $M:\mathcal D\to \mathcal S$ es $(\epsilon,\delta)$ ***- diferencialmente privado*** si dados dos datasets $D, D'\in \mathcal D$ adjacentes (se diferencin en una muestra) para todo $S\in \mathcal S$ se cumple que 
+$$P(M(D)\in S)\leq e^\epsilon P(M(D')\in S) + \delta$$
+Donde $\epsilon$ cuantifica el máximo impacto permitdo por un dato indivudual en la salida. $\delta$ especifica la máxima probabilidad de que la garantía de privacidad pueda fallar.
+
+Los metodos utilizados tienen en cuenta esta definición y demuestran que cada uno sus algoritmos la cumplen.
 
 ### "Generación"
 Los dos caminos a seguir fueron:
-- Fine-Tune de un modelo de lenguaje con Privacida Diferencial (Differential Privacy): Guiandonos por el articulo [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348) la idea era adaptar la libreria asociada [dp-transformers](https://github.com/microsoft/dp-transformers) para propociar el finetune con QLoRa y privacidad diferencial de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintèticos semejantes. Resulto imposible no solo imposible la adaptación por dificultades en la integración de la libreria [Opacus](https://opacus.ai/), encargada de dotar la privacidad en el pipeline, con QLora. Sino también, dado el caso de una correcta adaptación, los recursos disponibles (contando CCAD) son insuficientes para poder levarlo a cabo. En el repositorrio reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
-- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper el metodo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) buscamos adpatar su respectiva libreria [aug-pe](https://github.com/AI-secure/aug-pe) desarrollada para los datos de Yelp, OpenReview y PubMed, consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos mas bien largos sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen por ejemplo calificaciones.
-La idea del metodo de evolución privada desarrollada en el articulo, se basa de tres componentes fundaentales:
-	- Samplin
-	- Histrograma
-	- Varaition
+- Fine-Tune de un modelo de lenguaje con Privacida Diferencial : Guiandonos por el articulo [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348), la idea era adaptar la libreria asociada [dp-transformers](https://github.com/microsoft/dp-transformers) para propociar el finetune con QLoRa + DP de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintéticos semejantes. La adaptación resulta imposible, en primer lugar por errores fuera de nuestro comprensión (PyTorch), y en segundo lugar por insuficiencia de recursos disponibles (contando CCAD). En el repositorrio reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
+Indagando en una una parte fundamental del repo: [Opacus](https://opacus.ai/),  libreria encargada de dotar la privacidad en el pipeline, no logramos ni siquiera hacer un setup simple de finetuninig. El motivo de la exigencia de recursos de este metodo, es la utilización del algoritmo **DP-SGD** un descenso estocastico pero con privacidad diferencial, es el calculo gradientes por muestra (per-sample gradient) para hacer un recorte (clipping) que garanztiza el DP. 
+- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper el metodo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) buscamos adpatar su respectiva libreria [aug-pe](https://github.com/AI-secure/aug-pe) desarrollada para los datos de Yelp, OpenReview y PubMed. Consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos medianos (abstracts de medicina) sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen, por ejemplo, calificaciones. Por lo tanto utilizamosel desarrollo para PubMed como guía en la adaptación.
+La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, se basa de tres componentes fundaentales:
 
-y a diferencia del finetune no requiere que accedamos directamente a los modelos de lenguaje, de igual manera el costo alto que puede conllevar realizar el finetune con DP de un modelo grande como Llama, resulta mas eficiente utilizar PE.  
+	- RANDOM_API: Genera $n$ muestras sinteticas con un modelo de lenguaje.
+	- DP_NN_HISTOGRAM: Cada muestra privada vota por los documentos sinteticos mas cercanos en un espacio donde son embebidos. Añade luego ruido Gausiano a los votos para asegurar DP.
+	- VARIATION_API: Hace variaciones de los documentos sinteticos generados inicialmente.
+
+	Una vez generados los datos sinteticos inicales RANDOM_API luego se itera sobre DP_NN_HISTOGRAM y VARIATION_API las epocas deseadas. 
+	
+	Cabe destacar que, al ser la privacidad asegurada 'por fuera' de la generación, este algoritmo solo solicita los pasos de inferencia de los modelos de lenguaje. Es por ello que, si tenemos acceso, podremos utilizar aun modelos de lenguaje cerrados. También resulta más eficiente, si la cantidad $n$ de muestras generadas no es gigante, este metodo para modelos abiertos con muchos parámetros en comparación al finetune con DP. 
+
+	Debemos elegir entonces un modelo de lenguaje para generación, un modelo de sentence tranformer para relizar los embeddings y  un adecuado diseño de prompts para la generación y variación.  
+
+	Para el modelo de generacion de texto buscamos uno que soporte instrucciones para desarrollar mejor la tarea. Primero elegimos Lama3.? 1B Instruct, pero notamos que por mas de ser miltiligual, la generación terminaba siendo puramente en ingles. Para lograr la generación en espaól encontramos un Llama 7B Instruct finetuneado para español. para el sentence tranformer elegimos ... 
+	
+	Un objetivo inicial era poder crear documentos parecidos en formato al original, es decir, un membrete y la transcricion del informe junto al ruido provocado por el OCR. Para intentar eso utilizabamos los 19 documentos sin procesar. Para el prompt de genereacion dictamos: 
+	>"Escribi un informe policial de un informante anonimo: " 
+
+	Para la variacion:
+	> "de forma casual",  "de forma creativa",  "de forma concisa"
+	
+	Notamos en este primer intento mucho apego al ruido terminando con documentos completasmente ininetelibles o en ruso!
+	
+	Abandonamos entonces el ambicioso objetivo de crear documentos completos. Para intentar mejorar la generación en una tarea mas específica de genera meramente informes, dividimos cada uno de los documentos en algunos mas pequeños de 500 palabras. Primero identificamos dos palabras clave, que parecen ser generalmente bien leidas por el OCR, como divisores principales:
+	
+	- 'Agente' que aparece al inicio de cada membrete
+	
+	- 'Texto'  que aparece justo antes de los informes
+
+	Como dijimos, el ruido ya lo consideramos fuera de nuestro alcance, por lo tanto, antes de dividir, porcedimos a eliminar las stopwords y minuscular. Una vez hecha esa division segun las palabras 'clave' con el  [CharacterTextSplitter](	https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.CharacterTextSplitter.html#) (de langachain) seguimos subdividiendo cada una de ellas con el [RecursiveCharacterTextSplitter](https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#) hasta que todos los mini chunks tengan largo menor a 500. Resultando en $\sim 35000$ documentos distintos.
 
 
-
-La generación de datos sintéticos no resutlto fructífera con ninguno de los metodos empleados.
+	El prompt inicial de generación estaba mal hecho, no es un iformante el que escribe, sino mas bien una transcripción por ello los cambiamos por:
+	> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
+	
+	Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen minimo $n=2000$), los resultados con esta cantidad son poco prometedores, y peor aun es que a medida que mas epocas se itera peor son los datos sinteticos.
 
 ## Hipótesis de trabajo
 1. El corpus del Archivo del Terro es comparable al archivo de la memoria de Argentina, y por lo tanto, las herramientas que sean desarrolladas pueden aplicarse a este dataset.
