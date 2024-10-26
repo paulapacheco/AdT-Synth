@@ -1,3 +1,4 @@
+
 # Generación de datos sintéticos a partir de documentos del Archivo del Terror
 
 ## Resumen
@@ -5,7 +6,7 @@ A partir de archivos que tienen datos protegidos explorar la generación(generar
 
 En general, los archivos de la última dictadura militar están protegidos debido a que contienen inofrmación sensible de las víctimas. Nosotros elegimos trabajar con datos del Archivo del Terror de Uruguay, dicho dataset actualmente es público.
 
-## Hipótesis de trabajo
+## Hipótesis de trabajo 2.0
 1. Es posible generar nuevos documentos sinteticos manteniendo la distribución de los documentos originales sin dejar de vulnerar su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
 2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
@@ -13,12 +14,13 @@ En general, los archivos de la última dictadura militar están protegidos debid
 - Generación de Datos Sintéticos: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
 
   La generación de un un nuevo archivo sintetico ha sido abandonada, pero hay minusculas tareas de inspección que aun podemos llevar a cabo:
-  - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun corpus en ingles y español con [mejor porcesamiento] NO MG que el Archivo del Terror. Generar textos sinteticos a partir de un solo texto privado suficientemente [lindo para ver de cerca] la generación.
-  - Ver el impacto de aumentar la cantidad de samples generados para la calidad de los datos siteticos.
+  - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun dataset en ingles y/o español con textos mas limpios que el Archivo del Terror. 
+  - Generar textos sinteticos a partir de un solo texto privado suficientemente 'bueno', en sentido de no tener el menor ruido posible.
+  - Ver-+ el impacto de aumentar la cantidad de samples generados para la calidad de los datos siteticos.
   - Identificar entidades o cadenas de palabras en los datos prohibidos consideradas como prohibidas para el presunto conjunto de datos sintetico.
      
 - Resistencia a ataques maliciosos: Diseñar datos sintéticos que sean resistentes a ataques maliciosos.
-- Validación de Resultados: Establecer un protocolo para evaluar la efectividad de los datos sintéticos en la investigación.
+- Validación de Resultados: Establecer un protocolo para evaluar la efectividad de los datos sintéticos en la investigación.
 
   Los ultimos objetivos resultan imposibles dado que el aterior resulto abandonado. 
 
@@ -86,33 +88,40 @@ La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, s
 	
 	Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen minimo $n=2000$), los resultados con esta cantidad son poco prometedores, y peor aun es que a medida que mas epocas se itera peor son los datos sinteticos.
 
-## Hipótesis de trabajo
-1. El corpus del Archivo del Terro es comparable al archivo de la memoria de Argentina, y por lo tanto, las herramientas que sean desarrolladas pueden aplicarse a este dataset.
-2. Es posible generar nuevos documentos manteniendo la distribución de los documentos originales.
-3.
-4. Estas propiedades son por ejemplo, la distribución de palabras, la distribución de entidades nombradas, la distribución sobre la estructura del documento, etc.
-5. Es posible generar datos sintéticos resistentes a ataques maliciosos para identificar a las víctimas. 
+Un metodo descartdo por su demanda de recursos fue 
+el post-procesado de OCR, que podrían resultar eficiente para la tarea de generar informes.
 
-## Referencia
+## Referencias
 - [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348)
 - [dp-transformers](https://github.com/microsoft/dp-transformers)
 - [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
 - [aug-pe](https://github.com/AI-secure/aug-pe)
 - [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 
+## Evaluación (digamos)
+La evaluación de las tareas finales, dado su corto alcance, sera completamente anecdótica.
+Para comparar la similaridad de los datos sintéticos con los originales se utilizan las metricas sobre el espacio donde las embebemos, como el **FID** (Fréchet Inception Distance), la ***'kNN' F1-Score*** (F1 claculado sobre kNN datos originales de los datos generados y viceversa) dada la pobre performance de los datos hasta ahora obtenidos los resultados son consecuentemente malos. Otra posible métrica es la **MAUVE** pero no la calculamos dada la poca cantidad de muestras generadas. 
+Planteando un hipotético futuro donde consiguieramos efectivamente datos sinteticos, la seguiriamos el camino del articulo .... , finetuneando algun modelo BERT sobre los datos sinteticos y evaluar la accuracy en la prección de la proxima palabra. 
+
+## Sugerencias
+> ¿Se utilizarán otros documentos históricos para evaluar la herramienta? ¿Quizás la comparabilidad con el Archivo de Argentina sea un objetivo para una etapa posterior? ¿Quizás un objetivo intermedio sería consolidar una metodología que se pudiera aplicar al Archivo de Argentina para poder generar datos sintéticos a partir de esos datos?
+
+Si terminasemos de desarrollar propieamente la generación de textos y contanmos con el acceso a otros datos sería optimo. Dado que nos restringimos solo a informes, podriamos ver como se comporta el mismo pipeline con un rollo cualquiera del Archivo del Terror
+Efectivamente es un objetivo ulterior poder generalizar a cualquier dataset del dominio.
+
 ## Planificación
 
-- Semana del 23 al 29 de septiembre: Preparación del entorno de trabajo y adaptación al mismo. Continuación en la revisión de documentos académicos y repositorios útiles. _[Completada]_
+- Semana del 23 al 29 de septiembre: Preparación del entorno de trabajo y adaptación al mismo. Continuación en la revisión de documentos académicos y repositorios útiles. ***[Completada]***
 
-- Semana del 30 de septiembre al 6 de octubre: Adaptación de repositorios relevantes para nuestro problema de interés. Modificación del conjunto de datos para optimizar su adecuación a los fines del proyecto. _[Completada]_
+- Semana del 30 de septiembre al 6 de octubre: Adaptación de repositorios relevantes para nuestro problema de interés. Modificación del conjunto de datos para optimizar su adecuación a los fines del proyecto. **_[Completada]_**
 
-- Semana del 7 al 13 de octubre: Inicio de pruebas preliminares utilizando el modelo GPT-2. Estas pruebas serán breves y de corta duración, además de investigar métodos para la evaluación de los resultados obtenidos. _[Completada sin éxito]_. Si bien realizamos estas pruebas preliminares, GPT-2 no resultó útil para nuestro propósito. 
+- Semana del 7 al 13 de octubre: Inicio de pruebas preliminares utilizando el modelo GPT-2. Estas pruebas serán breves y de corta duración, además de investigar métodos para la evaluación de los resultados obtenidos. **_[Completada sin éxito]_**. Si bien realizamos estas pruebas preliminares, GPT-2 no resultó útil para nuestro propósito. 
 
-- Semana del 14 al 20 de octubre: Continuación de las pruebas, con la posibilidad de explorar otros modelos de lenguaje abiertos, preferentemente aquellos más grandes o recientes, y comparación de los resultados obtenidos. _[Completada sin éxito]_. Adapatamos los dos modelos mencionados anteriormente en la metodología. Si bien exploramos diversos modelos de lenguajes, antes mencionados, no obtuvimos resultados favorables.
+- Semana del 14 al 20 de octubre: Continuación de las pruebas, con la posibilidad de explorar otros modelos de lenguaje abiertos, preferentemente aquellos más grandes o recientes, y comparación de los resultados obtenidos. **_[Completada sin éxito]_**. Adapatamos los dos modelos mencionados anteriormente en la metodología. Si bien exploramos diversos modelos de lenguajes, antes mencionados, no obtuvimos resultados favorables.
 
-- Semana del 21 al 27 de octubre: Continuación de las pruebas y realización de una evaluación exhaustiva, así como la preparación del informe correspondiente. _[No pudimos realizar la evaluación debido a que no obtuvimos resultados favorables]_.
+- Semana del 21 al 27 de octubre: Continuación de las pruebas y realización de una evaluación exhaustiva, así como la preparación del informe correspondiente. **_[No pudimos realizar la evaluación debido a que no obtuvimos resultados favorables]_.**
 
-- Semana del 28 de octubre al 4 de noviembre: Finalización del repositorio, asegurando su presentación de manera adecuada, y preparación de la presentación final del proyecto. _[En curso]_.
+- Semana del 28 de octubre al 4 de noviembre: Finalización del repositorio, asegurando su presentación de manera adecuada, y preparación de la presentación final del proyecto. **_[En curso]_**.
 
 ### Planificación actualizada 
 
@@ -127,7 +136,7 @@ Durante las próximas semanas, además de preparar el informe final y la present
 El principal plan a futuro es la generación de datos sintéticos, que fue la meta inicial de este proyecto. Para lograrlo, necesitaremos un mayor poder computacional y exploraremos otros modelos disponibles. 
 
 Para esto, planteamos otros posibles trabajos que nos podrían ayudarnos a llegar a ese objetivo.
-- Entender el rango de archivos.
+- Extender el rango de rollos: No acotarnos solo a los archivos de informe, sino también toda la variedad de documentos, con nuevas difulatades para el procesamiento, aun que ganando más datos.
 - Investigar métodos más efectivos para la separación de datos.
 - Explorar la herramienta Opacus.
 - Realizar finetuning a un modelo más reciente para instrucciones en español.
