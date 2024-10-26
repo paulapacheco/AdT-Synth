@@ -51,9 +51,9 @@ Los metodos utilizados tienen en cuenta esta definición y demuestran que cada u
 
 ### "Generación"
 Los dos caminos a seguir fueron:
-- Fine-Tune de un modelo de lenguaje con Privacida Diferencial : Guiandonos por el articulo [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348), la idea era adaptar la libreria asociada [dp-transformers](https://github.com/microsoft/dp-transformers) para propociar el finetune con QLoRa + DP de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintéticos semejantes. La adaptación resulta imposible, en primer lugar por errores fuera de nuestro comprensión (PyTorch), y en segundo lugar por insuficiencia de recursos disponibles (contando CCAD). En el repositorrio reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
+- Fine-Tune de un modelo de lenguaje con Privacida Diferencial : Guiandonos por el articulo[^1], la idea era adaptar la libreria asociada[^2] para hacer un el finetune con QLoRa + DP de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintéticos semejantes. La adaptación resulta imposible, en primer lugar por errores fuera de nuestro comprensión (PyTorch), y en segundo lugar por insuficiencia de recursos disponibles (contando CCAD). En el repositorrio reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo[^3] reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
 Indagando en una una parte fundamental del repo: [Opacus](https://opacus.ai/),  libreria encargada de dotar la privacidad en el pipeline, no logramos ni siquiera hacer un setup simple de finetuninig. El motivo de la exigencia de recursos de este metodo, es la utilización del algoritmo **DP-SGD** un descenso estocastico pero con privacidad diferencial, es el calculo gradientes por muestra (per-sample gradient) para hacer un recorte (clipping) que garanztiza el DP. 
-- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper el metodo [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749) buscamos adpatar su respectiva libreria [aug-pe](https://github.com/AI-secure/aug-pe) desarrollada para los datos de Yelp, OpenReview y PubMed. Consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos medianos (abstracts de medicina) sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen, por ejemplo, calificaciones. Por lo tanto utilizamosel desarrollo para PubMed como guía en la adaptación.
+- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper[^3] el metodo buscamos adpatar su respectiva libreria[^4] desarrollada para los datos de Yelp, OpenReview y PubMed. Consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos medianos (abstracts de medicina) sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen, por ejemplo, calificaciones. Por lo tanto utilizamosel desarrollo para PubMed como guía en la adaptación.
 La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, se basa de tres componentes fundaentales:
 
 	- RANDOM_API: Genera $n$ muestras sinteticas con un modelo de lenguaje.
@@ -82,7 +82,7 @@ La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, s
 	
 	- 'Texto'  que aparece justo antes de los informes
 
-	Como dijimos, el ruido ya lo consideramos fuera de nuestro alcance, por lo tanto, antes de dividir, porcedimos a eliminar las stopwords y minuscular. Una vez hecha esa division segun las palabras 'clave' con el  [CharacterTextSplitter](	https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.CharacterTextSplitter.html#) (de langachain) seguimos subdividiendo cada una de ellas con el [RecursiveCharacterTextSplitter](https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#) hasta que todos los mini chunks tengan largo menor a 500. Resultando en $\sim 35000$ documentos distintos.
+	Como dijimos, el ruido ya lo consideramos fuera de nuestro alcance, por lo tanto, antes de dividir, porcedimos a eliminar las stopwords y minuscular. Una vez hecha esa division[^5] segun las palabras 'clave' con el  [CharacterTextSplitter](	https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.CharacterTextSplitter.html#) (de langachain) seguimos subdividiendo cada una de ellas con el [RecursiveCharacterTextSplitter](https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#) hasta que todos los mini chunks tengan largo menor a 500. Resultando en $\sim 35000$ documentos distintos.
 
 
 	El prompt inicial de generación estaba mal hecho, no es un iformante el que escribe, sino mas bien una transcripción por ello los cambiamos por:
@@ -92,13 +92,6 @@ La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, s
 
 Un metodo descartdo por su demanda de recursos fue 
 el post-procesado de OCR, que podrían resultar eficiente para la tarea de generar informes.
-
-## Referencias
-- [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348)
-- [dp-transformers](https://github.com/microsoft/dp-transformers)
-- [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
-- [aug-pe](https://github.com/AI-secure/aug-pe)
-- [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 
 ## Evaluación (digamos)
 La evaluación de las tareas finales, dado su corto alcance, sera completamente anecdótica.
@@ -149,3 +142,10 @@ Para esto, planteamos otros posibles trabajos que nos podrían ayudarnos a llega
 - Llevar a cabo una evaluación downstream intermedia en BERT, basándonos en el paper.
 - Performar ataques maliciosos de reidentificación para evaluar la efectividad del modelo.
 - Investigar la aplicabilidad del modelo a otros datasets del mismo dominio.
+
+## Referencias
+[^1]: [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348)
+[^2]: [dp-transformers](https://github.com/microsoft/dp-transformers)
+[^3]: [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
+[^4]: [aug-pe](https://github.com/AI-secure/aug-pe)
+[^5]: [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
