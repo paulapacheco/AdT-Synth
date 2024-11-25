@@ -118,7 +118,7 @@ Efectivamente es un objetivo ulterior poder generalizar a cualquier dataset del 
 El principal plan a futuro es la generación de datos sintéticos, que fue la meta inicial de este proyecto. Para lograrlo, necesitaremos un mayor poder computacional y exploraremos otros modelos disponibles. 
 
 Para esto, planteamos otros posibles trabajos que nos podrían ayudarnos a llegar a ese objetivo.
-- Extender el rango de rollos: No acotarnos solo a los archivos de informe, sino también toda la variedad de documentos, con nuevas difulatades para el procesamiento, aun que ganando más datos.
+- **Extender el rango** de rollos explorados: No acotarnos solo a los archivos de informe, sino también toda la variedad de documentos, con nuevas difulatades para el procesamiento, aun que ganando más datos.
 - Investigar métodos más efectivos para la separación de datos: Para realizar tareas mas especificas, como la generación de informes individuales que intentamos performar, resulta porvechoso encontrar mejor formas de separar los textos segun la composición de los rollos, membrete, informes, observaciones y asi poder segmentar la genración de texto. 
 - Explorar la herramienta Opacus.
 - Realizar finetuning a un modelo más reciente para instrucciones en español.
