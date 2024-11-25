@@ -37,7 +37,7 @@ Dentrro del Archivo del Terror hay multiples rollos a documentos de la dicatadur
 - Archivos de grafica (noticias/revistas)
 - Transcripciones de informe privados sobre vecinos o conocidos sospechosos.
 
-Decidimos enfocarnos solo en los rollos (19) dedicados a informes privados para la generación de textos. Descartamos las listas de nombres por ser pobres para una generacion de textos. Dejamos de lado también otro tipo de rollos por ser muy diversos no solo en estrucutura sino también en contenido. Los rollos de informes solo poseen la trascripcion junto a un membrete al inicio de cada agente infomante.
+Decidimos enfocarnos solo en los 19 rollos dedicados a informes privados para la generación de textos. Descartamos las listas de nombres por ser pobres para una generacion de textos. Dejamos de lado también otro tipo de rollos por ser muy diversos no solo en estrucutura sino también en contenido. Los rollos de informes solo poseen la trascripcion junto a un membrete al inicio de cada agente infomante.
 
 ### Privacidad Diferencial
 Para asegura que ciertos métodos cumplan con alguna garantía de privacidad es nos guiamos por un concepto fundamental, ya aceptado como un estandard, la Privacidad Diferencial (**DP**). La formulación matemática es la siguiente:
