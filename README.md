@@ -6,23 +6,21 @@ A partir de archivos que tienen datos protegidos explorar la generación(generar
 
 En general, los archivos de la última dictadura militar están protegidos debido a que contienen inofrmación sensible de las víctimas. Nosotros elegimos trabajar con datos del Archivo del Terror de Uruguay, dicho dataset actualmente es público.
 
-## Hipótesis de trabajo 2.0
+## Hipótesis de trabajo
 1. Es posible generar nuevos documentos sinteticos manteniendo la distribución de los documentos originales sin dejar de vulnerar su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
 2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
 ## Objetivos preliminares y revisión:
-- Generación de Datos Sintéticos: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
+- **Generación de Datos Sintéticos**: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
 
-  La generación de un un nuevo archivo sintetico ha sido abandonada, pero hay minusculas tareas de inspección que aun podemos llevar a cabo:
-  - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun dataset en ingles y/o español con textos mas limpios que el Archivo del Terror. 
-  - Generar textos sinteticos a partir de un solo texto privado suficientemente 'bueno', en sentido de no tener el menor ruido posible.
-  - Ver-+ el impacto de aumentar la cantidad de samples generados para la calidad de los datos siteticos.
-  - Identificar entidades o cadenas de palabras en los datos prohibidos consideradas como prohibidas para el presunto conjunto de datos sintetico.
+  La generación de un un nuevo archivo sintetico ha sido abandonada debido a los pobres resultados obtenidos no obstante, realizamos minusculas tareas de inspección para evaluar los metodos de generación de texto y recursos a disposición:
+  - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun dataset en ingles y/o español con textos mas 'limpios' que el Archivo del Terror. 
+  - Generar textos sinteticos y sucesivas variaiciones de un solo texto corto en el Archivo del Terror escogido y pulido a mano, es decir, un texto sin ruido.
      
-- Resistencia a ataques maliciosos: Diseñar datos sintéticos que sean resistentes a ataques maliciosos.
-- Validación de Resultados: Establecer un protocolo para evaluar la efectividad de los datos sintéticos en la investigación.
+- **Resistencia a ataques maliciosos**: Diseñar datos sintéticos que sean resistentes a ataques maliciosos.
+- **Validación de Resultados**: Establecer un protocolo para evaluar la efectividad de los datos sintéticos en la investigación.
 
-  Los ultimos objetivos resultan imposibles dado que el aterior resulto abandonado. 
+  Los ultimos objetivos resultaron imposibles dado que el aterior resulto abandonado. 
 
 
 ## Metodologia y Problemas
