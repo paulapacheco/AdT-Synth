@@ -27,7 +27,7 @@ Y una hipótesis a posteriori, suponiendo una prudente generación de datos sint
 
 ## Metodologia y Problemas
 
-El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público ubicado en  Archive.org.  
+El primer problema que nos encontramos fue el hecho de conseguir los datos. Al tratarse de datos protegidos, claramente es difícil acceder a los mismos. Finalmente, elegimos usar el Archivo del Terror del Uruguay ya que es un dataset público ubicado en [Archivo del Terror](https://archive.org/search?query=creator%3A%22Servicio+de+Informaci%C3%B3n+de+Defensa+%28SID%29%22).  
 
 En las ultimas semanas, cuando finalmente logramos hacer aveces en la prooducción, la pagina estuvo caída proyecto debido a ciberataques, por ende perdimos el acceso a los pdf correspondientes a cada texto del OCR. Los pdf nos servian de referencia para entender el procesamiento de los textos crudos, que en partes pueden resultar ininteligibles, por suerte la idea general ya la obtuvimos antes de que perdamos el acceso.
 
