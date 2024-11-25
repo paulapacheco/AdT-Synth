@@ -1,4 +1,3 @@
-
 # Generación de datos sintéticos a partir de documentos del Archivo del Terror
 
 ## Resumen
@@ -8,12 +7,15 @@ En general, los archivos de la última dictadura militar están protegidos debid
 
 ## Hipótesis de trabajo
 1. Es posible generar nuevos documentos sinteticos manteniendo la distribución de los documentos originales sin dejar de vulnerar su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
+
+Y una hipótesis a posteriori, suponiendo una prudente generación de datos sinteticos.
+
 2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
 ## Objetivos preliminares y revisión:
 - **Generación de Datos Sintéticos**: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
 
-  La generación de un un nuevo archivo sintetico ha sido abandonada debido a los pobres resultados obtenidos no obstante, realizamos minusculas tareas de inspección para evaluar los metodos de generación de texto y recursos a disposición:
+  La generación de un un nuevo archivo sintetico ha sido abandonada debido a los pobres resultados obtenidos, no obstante, realizamos minusculas tareas de inspección para evaluar los metodos de generación de texto y recursos a disposición:
   - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun dataset en ingles y/o español con textos mas 'limpios' que el Archivo del Terror. 
   - Generar textos sinteticos y sucesivas variaiciones de un solo texto corto en el Archivo del Terror escogido y pulido a mano, es decir, un texto sin ruido.
      
