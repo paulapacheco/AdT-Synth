@@ -130,6 +130,6 @@ Para esto, planteamos otros posibles trabajos que nos podrían ayudarnos a llega
 ## Referencias
 [^1]: [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348)
 [^2]: [dp-transformers](https://github.com/microsoft/dp-transformers)
-[^3]: [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://alphapav.github.io/augpe-dpapitext/)
+[^3]: [Differentially Private Synthetic Data via Foundation Model APIs 2: Text](https://arxiv.org/pdf/2403.01749)
 [^4]: [aug-pe](https://github.com/AI-secure/aug-pe)
 [^5]: [Notebook de Text Spliting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
