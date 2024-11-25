@@ -54,14 +54,14 @@ Los metodos utilizados tienen en cuenta esta definición y demuestran que cada u
 
 ### "Generación"
 Los dos caminos a seguir fueron:
-- Fine-Tune de un modelo de lenguaje con Privacida Diferencial : Guiandonos por el articulo[^1], la idea era adaptar la libreria asociada[^2] para hacer un el finetune con QLoRa + DP de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintéticos semejantes. La adaptación resulta imposible, en primer lugar por errores fuera de nuestra comprensión (PyTorch), y en segundo lugar por insuficiencia de recursos disponibles (contando CCAD). En el repositorrio[^2] reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo[^3] reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
+- **Fine-Tune de un modelo de lenguaje con Privacida Diferencial** : Guiandonos por el articulo[^1], la idea era adaptar la libreria asociada[^2] para hacer un el finetune con QLoRa + DP de un modelo gpt2 en epañol sobre los textos seleccionados del Archivo de Terror, para posteriormente generar informes sintéticos semejantes. La adaptación resulta imposible, en primer lugar por errores fuera de nuestra comprensión (PyTorch), y en segundo lugar por insuficiencia de recursos disponibles (contando CCAD). En el repositorrio[^2] reportan que sus implementaciones fueron sobre 8 GPUs de minimo 40GB, en el articulo[^3] reportan también que finetunear un GPT2 con DP tarda 456.71hs en una GPU de 32GB.
 Indagando en [Opacus](https://opacus.ai/), libreria encargada de dotar la privacidad en el pipeline, no logramos ni siquiera hacer un setup simple de finetuninig DP. El motivo de la exigencia de recursos de este metodo, es la utilización del algoritmo **DP-SGD** un descenso estocastico pero con privacidad diferencial, es el calculo gradientes por muestra (per-sample gradient) para hacer un recorte (clipping) que garanztiza el DP. 
-- Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE): Guiandono por el paper[^3] el metodo buscamos adpatar su respectiva libreria[^4] desarrollada para los datos de Yelp, OpenReview y PubMed. Consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos medianos (abstracts de medicina) sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen, por ejemplo, calificaciones. Por lo tanto utilizamosel desarrollo para PubMed como guía en la adaptación.
+- **Generación mediante 'sampleos privado' de documentos con Evolución Privada (PE)**: Guiandono por el paper[^3] el metodo buscamos adpatar su respectiva libreria[^4] desarrollada para los datos de Yelp, OpenReview y PubMed. Consideramos PubMed la mas cercana a nuestro tipo de datos, no por el domino, sino por contar con textos medianos (abstracts de medicina) sin ningun tipo de caracteristica adicional como Yelp y OpenReview que tienen, por ejemplo, calificaciones. Por lo tanto utilizamosel desarrollo para PubMed como guía en la adaptación.
 La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, se basa de tres componentes fundaentales:
 
-	- RANDOM_API: Genera $n$ muestras sinteticas con un modelo de lenguaje.
-	- DP_NN_HISTOGRAM: Cada muestra privada vota por los documentos sinteticos mas cercanos en un espacio donde son embebidos. Añade luego ruido Gausiano a los votos para asegurar DP.
-	- VARIATION_API: Hace variaciones de los documentos sinteticos generados inicialmente.
+	- *RANDOM_API*: Genera $n$ muestras sinteticas con un modelo de lenguaje.
+	- *DP_NN_HISTOGRAM*: Cada muestra privada vota por los documentos sinteticos mas cercanos en un espacio donde son embebidos. Añade luego ruido Gausiano a los votos para asegurar DP.
+	- *VARIATION_API*: Hace variaciones de los documentos sinteticos generados inicialmente.
 
 	Una vez generados los datos sinteticos inicales RANDOM_API luego se itera sobre DP_NN_HISTOGRAM y VARIATION_API las epocas deseadas. 
 	
@@ -92,9 +92,10 @@ La idea del metodo de evolución privada (**PE**) desarrollada en el articulo, s
 	> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
 	
 	Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen minimo $n=2000$), los resultados con esta cantidad son poco prometedores, y peor aun es que a medida que mas epocas se itera peor son los datos sinteticos.
+	Para intentar mejorar la cantidad de samples $n$ y la cantidad EPOCAS de variación intentamos usar los nuevos recursos obtenidos con Jupyter del CCAD pero por problemas de compatibilidad no pudimos lograrlo.
 
 Un metodo descartdo por su demanda de recursos fue 
-el post-procesado de OCR, que podrían resultar eficiente para la tarea de generar informes.
+el post-procesado de OCR, que podrían resultar eficiente para la tarea de generar informes individuales.
 
 ## Evaluación (digamos)
 La evaluación de las tareas finales, dado su corto alcance, sera predominantemente anecdótica.
@@ -108,28 +109,6 @@ Planteando un hipotético futuro donde consiguieramos efectivamente datos sintet
 
 Si terminasemos de desarrollar propieamente la generación de textos y contanmos con el acceso a otros datos sería optimo. Dado que nos restringimos solo a informes, podriamos ver como se comporta el mismo pipeline con un rollo cualquiera del Archivo del Terror
 Efectivamente es un objetivo ulterior poder generalizar a cualquier dataset del dominio.
-
-## Planificación
-
-- Semana del 23 al 29 de septiembre: Preparación del entorno de trabajo y adaptación al mismo. Continuación en la revisión de documentos académicos y repositorios útiles. ***[Completada]***
-
-- Semana del 30 de septiembre al 6 de octubre: Adaptación de repositorios relevantes para nuestro problema de interés. Modificación del conjunto de datos para optimizar su adecuación a los fines del proyecto. **_[Completada]_**
-
-- Semana del 7 al 13 de octubre: Inicio de pruebas preliminares utilizando el modelo GPT-2. Estas pruebas serán breves y de corta duración, además de investigar métodos para la evaluación de los resultados obtenidos. **_[Completada sin éxito]_**. Si bien realizamos estas pruebas preliminares, GPT-2 no resultó útil para nuestro propósito. 
-
-- Semana del 14 al 20 de octubre: Continuación de las pruebas, con la posibilidad de explorar otros modelos de lenguaje abiertos, preferentemente aquellos más grandes o recientes, y comparación de los resultados obtenidos. **_[Completada sin éxito]_**. Adapatamos los dos modelos mencionados anteriormente en la metodología. Si bien exploramos diversos modelos de lenguajes, antes mencionados, no obtuvimos resultados favorables.
-
-- Semana del 21 al 27 de octubre: Continuación de las pruebas y realización de una evaluación exhaustiva, así como la preparación del informe correspondiente. **_[No pudimos realizar la evaluación debido a que no obtuvimos resultados favorables]_.**
-
-- Semana del 28 de octubre al 4 de noviembre: Finalización del repositorio, asegurando su presentación de manera adecuada, y preparación de la presentación final del proyecto. **_[En curso]_**.
-
-### Planificación actualizada 
-
-Durante las próximas semanas, además de preparar el informe final y la presentación como está planificado, realizaremos algunas modificaciones a lo planeado, como:
-
-- Investigar la efectividad de aug-pe, detallado en la sección de metodología, en un corpus en inglés.
-- Generar textos sinteticos a partir de un único texto privado que sea lo suficientemente bueno para examinar de cerca el proceso de generación.
-- Analizar cómo afecta el incremento en la cantidad de muestras generadas a la calidad de los datos sintéticos, utilizando el CCAD.
 
 ## Trabajo a futuro
 
