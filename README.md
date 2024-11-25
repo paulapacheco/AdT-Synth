@@ -119,16 +119,17 @@ El principal plan a futuro es la generación de datos sintéticos, que fue la me
 
 Para esto, planteamos otros posibles trabajos que nos podrían ayudarnos a llegar a ese objetivo.
 - **Extender el rango** de rollos explorados: No acotarnos solo a los archivos de informe, sino también toda la variedad de documentos, con nuevas difulatades para el procesamiento, aun que ganando más datos.
-- Investigar métodos más efectivos para la separación de datos: Para realizar tareas mas especificas, como la generación de informes individuales que intentamos performar, resulta porvechoso encontrar mejor formas de separar los textos segun la composición de los rollos, membrete, informes, observaciones y asi poder segmentar la genración de texto. 
-- Explorar la herramienta Opacus.
-- Realizar finetuning a un modelo más reciente para instrucciones en español.
-- Probar la generación de datos con modelos cerrados como GPT 3.5.
+- Investigar métodos más efectivos para la **separación de datos**: Para realizar tareas mas especificas, como la generación de informes individuales que intentamos performar, resulta porvechoso encontrar mejor formas de separar los textos segun la composición de los rollos (membrete, informes, observaciones, etc) y asi poder segmentar la genración de texto. 
+- Explorar la herramienta **Opacus**: Como dijimos, esta libreria permite convertir el porceso de finetunig en diferencialmente privado. Uno de los objetivos del primer articulo[^1]  es justamente integrarlo al porceso de finetnung, consecuentemente resultaria porvechoso estudiar mejor el funcionamiento de esta libreria y otras importantes como PyTorch.
+- Realizar **finetuning a un modelo más reciente** para instrucciones en español: Finalmente intentamos generar textos con aug-pe[^2] en base a un finetune de intrucciones en español para un Llama 2, podriamos realizar un fintune sobre intrucciones en español para modelos mas actuales como algun Llama 3 
+- Probar la generación de datos con **modelos cerrados**: Solo adaptamos la parte de modelos abiertos de aug-pe[^2] , podriamos probar también afdaptar el mecanismo de generación en base a modelos cerrdos, como GPT 3.5. capaz de tomar mejores intrucciones por ejemplo. 
 - Variar y mejorar los prompts utilizados.
 - Una vez generados los datos, identificar entidades.
 - Diseñar correctamente un mecanismo de detección de combinaciones prohibidas.
 - Llevar a cabo una evaluación downstream intermedia en BERT, basándonos en el paper.
 - Performar ataques maliciosos de reidentificación para evaluar la efectividad del modelo.
 - Investigar la aplicabilidad del modelo a otros datasets del mismo dominio.
+- CCAd
 
 ## Referencias
 [^1]: [Synthetic Text Generation with Differential Privacy - A simple and Practical Recipe](https://arxiv.org/pdf/2210.14348)
