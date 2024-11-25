@@ -3,7 +3,7 @@ En la notebook hicimos una adaptación de la libreria [aug-pe](https://github.co
 En primer lugar esta la carpeta [apis](https://github.com/AI-secure/aug-pe/tree/main/apis) de donde tomamos 
 - api.py - Donde se define la clase API
 - hf_api.py - Donde redefine la clase API para su utilización de modelos abiertos de hugging face. Encargada de definir la generación y variacion de textos.
-- utils.py - Donde
+- utils.py - Donde se definen los prompts de variación
 
 Luego seguimos con la carpeta  [dpsda](https://github.com/AI-secure/aug-pe/tree/main/dpsda) de donde tomamos:
 - feature_extractor.py - Donde se define el embedding con el SentenceTransformer
