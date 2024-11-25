@@ -101,7 +101,7 @@ el post-procesado de OCR, que podrían resultar eficiente para la tarea de gener
 ## Evaluación (digamos)
 La evaluación de las tareas finales, dado su corto alcance, sera predominantemente anecdótica.
 
-Para comparar la similaridad de los datos sintéticos con los originales se utilizan las metricas sobre el espacio donde las embebemos, como el **FID** (Fréchet Inception Distance), la ***'kNN' F1-Score*** (F1 claculado sobre kNN datos originales de los datos generados y viceversa) dada la pobre performance de los datos hasta ahora obtenidos los resultados son consecuentemente malos. Otra posible métrica es la **MAUVE** pero no la calculamos dada la poca cantidad de muestras generadas. 
+Para comparar la similaridad de los datos sintéticos con los originales se utilizan las metricas sobre el espacio donde las embebemos, como el **FID** (Fréchet Inception Distance), la ***'kNN' F1-Score*** (F1 claculado sobre kNN datos originales de los datos generados y viceversa) ver A.5 en [^1]. Dada la pobre performance de los datos hasta ahora obtenidos los resultados son consecuentemente malos. Otra posible métrica es la **MAUVE** pero no la calculamos dada la poca cantidad de muestras generadas. 
 
 Planteando un hipotético futuro donde consiguieramos efectivamente datos sinteticos, la seguiriamos el camino del articulo .... , finetuneando algun modelo BERT sobre los datos sinteticos y evaluar la accuracy en la prección de la proxima palabra. 
 
