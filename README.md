@@ -41,6 +41,8 @@ Decidimos enfocarnos solo en los 19 rollos dedicados a informes privados para la
 
 ### Privacidad Diferencial
 Para asegura que ciertos métodos cumplan con alguna garantía de privacidad es nos guiamos por un concepto fundamental, ya aceptado como un estandard, la Privacidad Diferencial (**DP**). La formulación matemática es la siguiente:
+Que preferis??
+
 ![image](https://github.com/user-attachments/assets/100faa2f-e389-4b91-9086-4b9985441954)
 
 
