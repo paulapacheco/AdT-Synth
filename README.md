@@ -80,9 +80,10 @@ Para el modelo de generación de texto buscamos uno que soporte instrucciones pa
 Un objetivo inicial era poder crear documentos parecidos en formato al original, es decir, un membrete y la transcripción del informe junto al ruido provocado por el OCR. Para intentar eso utilizábamos los 19 documentos sin procesar.
 
 Para el prompt de genereacion dictamos: 
-	>"Escribi un informe policial de un informante anonimo: " 
+	> - "Escribi un informe policial de un informante anonimo: " 
 
 Para la variacion:
+
 	> "de forma casual",  "de forma creativa",  "de forma concisa"
 	
 Notamos en este primer intento mucho apego al ruido terminando con documentos completamente inentendibles o en ruso.
