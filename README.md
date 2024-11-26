@@ -100,6 +100,8 @@ El prompt inicial de generación estaba mal hecho, no es un informante el que es
 Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen mínimo $n=2000$), los resultados con esta cantidad son poco prometedores, y como es esperable, a medida que más iteraciones hacíamos, peor eran los datos sintéticos generados.
 Para intentar mejorar la cantidad de samples $n$ y la cantidad iteraciones de variación intentamos usar los nuevos recursos obtenidos con Jupyter del CCAD pero por problemas de compatibilidad no pudimos lograrlo.
 
+Además, probamos la generación utilizando otros datasets con textos más breves y limpios, de distintas áreas, pero continuamos sin obtener buenos resultados.
+
 Un metodo descartdo por su demanda de recursos fue el post-procesado de OCR, que podrían resultar eficiente para la tarea de generar informes individuales.
 
 ## Evaluación (digamos)
@@ -123,7 +125,7 @@ Para esto, planteamos otros posibles trabajos que nos podrían ayudar a llegar a
 - **Extender el rango** de rollos explorados: No acotarnos solo a los archivos de informe, sino también a toda la variedad de documentos, con nuevas dificultades para el procesamiento, aunque ganando más datos.
 - Investigar métodos más efectivos para la **separación de datos**: Para realizar tareas mas especificas, como la generación de informes individuales que intentamos performar, resulta porvechoso encontrar mejor formas de separar los textos según la composición de los rollos (membrete, informes, observaciones, etc) y así poder segmentar la generación de texto. 
 - Explorar la herramienta **Opacus**: Como dijimos, esta librería permite convertir el proceso de finetunig en diferencialmente privado. Uno de los objetivos del primer articulo[^1]  es justamente integrarlo al porceso de finetuning, consecuentemente resultaría provechoso estudiar mejor el funcionamiento de esta librería y otras importantes como PyTorch.
-- CCAD
+- Profundizar en la adaptación del modelo para aprovechar la capacidad de cómputo proporcionada por el **CCAD**.
 - Realizar **finetuning a un modelo más reciente** para instrucciones en español: Finalmente intentamos generar textos con aug-pe[^2] en base a un finetune de intrucciones en español para un Llama 2, podriamos realizar un fintune sobre intrucciones en español para modelos mas actuales como algun Llama 3.
 - Probar la generación de datos con **modelos cerrados**: Solo adaptamos la parte de modelos abiertos de aug-pe[^2] , podríamos probar también adaptar el mecanismo de generación en base a modelos cerrdos, como GPT 3.5. capaz de tomar mejores intrucciones por ejemplo. 
 - Variar y mejorar los **prompts** utilizados: La exploración del prompting no fue profusa y es altamente no trivial, habróa que investigar de manera mas detallada la ingeniería de los prompts pasados a cada modelo en particular. Si se segmenta la generación de datos sintéticos, también habría que explorar para cada una de las tareas propuestas. Se pueden investigar recursos como el Chain of Thought para mejorar la geración, lo que requeriria una modificación notoria del algoritmo adaptado.
