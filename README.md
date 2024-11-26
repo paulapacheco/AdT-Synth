@@ -102,19 +102,19 @@ Para intentar mejorar la cantidad de samples $n$ y la cantidad iteraciones de va
 
 Además, probamos la generación utilizando otros datasets con textos más breves y limpios, de distintas áreas, pero continuamos sin obtener buenos resultados.
 
-Un metodo descartdo por su demanda de recursos fue el post-procesado de OCR, que podrían resultar eficiente para la tarea de generar informes individuales.
+Un método descartado por su demanda de recursos fue el post-procesado de OCR, que podría resultar eficiente para la tarea de generar informes individuales.
 
 ## Evaluación (digamos)
 La evaluación de las tareas finales, dado su corto alcance, fue predominantemente anecdótica.
 
-Para comparar la similaridad de los datos sintéticos con los originales se utilizan las metricas sobre el espacio donde las embebemos, como el **FID** (Fréchet Inception Distance), la ***'kNN' F1-Score*** (F1 claculado sobre kNN datos originales de los datos generados y viceversa) ver A.5 en [^1]. Dada la pobre performance de los datos hasta ahora obtenidos los resultados son consecuentemente malos. Otra posible métrica es la **MAUVE** pero no la calculamos dada la poca cantidad de muestras generadas. 
+Para comparar la similaridad de los datos sintéticos con los originales se utilizan las métricas sobre el espacio donde las embebemos, como el **FID** (Fréchet Inception Distance), la ***'kNN' F1-Score*** (F1 claculado sobre kNN datos originales de los datos generados y viceversa) ver A.5 en [^1]. Dada la pobre performance de los datos hasta ahora obtenidos los resultados son consecuentemente malos. Otra posible métrica es la **MAUVE** pero no la calculamos dada la poca cantidad de muestras generadas. 
 
-Planteando un hipotético futuro donde consiguiéramos efectivamente datos sintéticos, seguiríamos el camino del articulo [^1], finetuneando algín modelo BERT sobre los datos sintéticos y evaluar la accuracy en la predicción de la próxima palabra. 
+Planteando un hipotético futuro donde consiguiéramos efectivamente datos sintéticos, seguiríamos el camino del articulo [^1], finetunear algún modelo BERT sobre los datos sintéticos y evaluar la accuracy en la predicción de la próxima palabra. 
 
 ## Sugerencias
 > ¿Se utilizarán otros documentos históricos para evaluar la herramienta? ¿Quizás la comparabilidad con el Archivo de Argentina sea un objetivo para una etapa posterior? ¿Quizás un objetivo intermedio sería consolidar una metodología que se pudiera aplicar al Archivo de Argentina para poder generar datos sintéticos a partir de esos datos?
 
-Si terminásemos de desarrollar propiamente la generación de textos y contáramos con acceso a otros datos sería óptimo. Dado que nos restringimos solo a informes, podriamos ver como se comporta el mismo pipeline con un rollo cualquiera del Archivo del Terror.
+Si terminásemos de desarrollar propiamente la generación de textos y contáramos con acceso a otros datos sería óptimo. Dado que nos restringimos solo a informes, podríamos ver como se comporta el mismo pipeline con un rollo cualquiera del Archivo del Terror.
 Efectivamente es un objetivo ulterior poder generalizar a cualquier dataset del dominio.
 
 ## Trabajo a futuro
