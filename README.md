@@ -80,7 +80,8 @@ Para el modelo de generación de texto buscamos uno que soporte instrucciones pa
 Un objetivo inicial era poder crear documentos parecidos en formato al original, es decir, un membrete y la transcripción del informe junto al ruido provocado por el OCR. Para intentar eso utilizábamos los 19 documentos sin procesar.
 
 Para el prompt de genereacion dictamos: 
-	> - "Escribi un informe policial de un informante anonimo: " 
+
+	> "Escribi un informe policial de un informante anonimo: " 
 
 Para la variacion:
 
@@ -98,6 +99,7 @@ Como dijimos, el ruido ya lo consideramos fuera de nuestro alcance, por lo tanto
 
 
 El prompt inicial de generación estaba mal hecho, no es un informante el que escribe, sino más bien una transcripción por ello los cambiamos por:
+
 	> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
 	
 Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen mínimo $n=2000$), los resultados con esta cantidad son poco prometedores, y como es esperable, a medida que más iteraciones hacíamos, peor eran los datos sintéticos generados.
