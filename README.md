@@ -43,11 +43,6 @@ Decidimos enfocarnos solo en los 19 rollos dedicados a informes privados para la
 
 ### Privacidad Diferencial
 Para asegura que ciertos métodos cumplan con alguna garantía de privacidad es nos guiamos por un concepto fundamental, ya aceptado como un estandard, la Privacidad Diferencial (**DP**). La formulación matemática es la siguiente:
-Que preferis??
-
-![image](https://github.com/user-attachments/assets/100faa2f-e389-4b91-9086-4b9985441954)
-
-
 
 Un algorito randomizado $M:\mathcal D\to \mathcal S$ es $(\epsilon,\delta)$ ***- diferencialmente privado*** si dados dos datasets $d, \tilde{d}\in \mathcal{D}$ adjacentes (se diferencian en una muestra) para todo $s\in \mathcal S$ se cumple que 
 
@@ -112,7 +107,7 @@ La evaluación de las tareas finales, dado su corto alcance, fue predominantemen
 
 Para comparar la similaridad de los datos sintéticos con los originales se utilizan las metricas sobre el espacio donde las embebemos, como el **FID** (Fréchet Inception Distance), la ***'kNN' F1-Score*** (F1 claculado sobre kNN datos originales de los datos generados y viceversa) ver A.5 en [^1]. Dada la pobre performance de los datos hasta ahora obtenidos los resultados son consecuentemente malos. Otra posible métrica es la **MAUVE** pero no la calculamos dada la poca cantidad de muestras generadas. 
 
-Planteando un hipotético futuro donde consiguiéramos efectivamente datos sinteticos, la seguiriamos el camino del articulo .... , finetuneando algun modelo BERT sobre los datos sinteticos y evaluar la accuracy en la predicción de la próxima palabra. 
+Planteando un hipotético futuro donde consiguiéramos efectivamente datos sintéticos, seguiríamos el camino del articulo [^1], finetuneando algín modelo BERT sobre los datos sintéticos y evaluar la accuracy en la predicción de la próxima palabra. 
 
 ## Sugerencias
 > ¿Se utilizarán otros documentos históricos para evaluar la herramienta? ¿Quizás la comparabilidad con el Archivo de Argentina sea un objetivo para una etapa posterior? ¿Quizás un objetivo intermedio sería consolidar una metodología que se pudiera aplicar al Archivo de Argentina para poder generar datos sintéticos a partir de esos datos?
