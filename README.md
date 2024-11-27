@@ -10,7 +10,7 @@ El proyecto finalmente consistió en una prueba de factibilidad para considerar 
 ## Hipótesis de trabajo
 1. Es posible generar nuevos documentos sinteticos manteniendo la distribución de los documentos originales sin dejar de vulnerar su privacidad, es decir, no poseen ninguna entidad reconocida ni hay posibilidad de reidentificarlas.  
 
-Y una hipótesis a posteriori, suponiendo una prudente generación de datos sintéticos.
+Y una hipótesis a posteriori, suponiendo una razonable generación de datos sintéticos.
 
 2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
