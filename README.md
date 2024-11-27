@@ -46,7 +46,7 @@ Para asegura que ciertos métodos cumplan con alguna garantía de privacidad es 
 
 Un algorito randomizado $M:\mathcal D\to \mathcal S$ es $(\epsilon,\delta)$ ***- diferencialmente privado*** si dados dos datasets $d, \tilde{d}\in \mathcal{D}$ adjacentes (se diferencian en una muestra) para todo $s\in \mathcal S$ se cumple que 
 
-$$P[M(d)\in s]\leq e^\epsilon\ P[M(\tilde{d})\in s] + \delta$$
+$$P[M(d)\in s]\leq \exp(\epsilon)\cdot P[M(\tilde{d})\in s] + \delta$$
 
 Donde $\epsilon$ cuantifica el máximo impacto permitdo por un dato indivudual en la salida. $\delta$ especifica la máxima probabilidad de que la garantía de privacidad pueda fallar.
 
