@@ -1,5 +1,6 @@
 # Adaptación de aug-pe
 En la notebook hicimos una adaptación de la libreria [aug-pe](https://github.com/AI-secure/aug-pe) guiándonos en mayor parte por el diseño para los datos de pubmed, los más parecidos a los del Archivo del Terror.
+
 En primer lugar está la carpeta [apis](https://github.com/AI-secure/aug-pe/tree/main/apis) de donde tomamos 
 - api.py - Donde se define la clase API
 - hf_api.py - Donde redefine la clase API para la utilización de modelos abiertos de hugging face. Encargada de definir la generación y variación de textos.
