@@ -12,6 +12,6 @@ Luego seguimos con la carpeta  [dpsda](https://github.com/AI-secure/aug-pe/tree/
 - metrics.py - Donde se definen varias métricas. 
 - logging.py - Porsicaso.
 
-En **Noise Level Calculation**, adaptamos la [notebook](https://github.com/AI-secure/aug-pe/blob/main/notebook/dp_budget.ipynb?short_path=ab58a17) encargada de darnos el ruido necesitado dado un $\epsilon$ elegido.
+En **Noise Level Calculation**, adaptamos la [notebook](https://github.com/AI-secure/aug-pe/blob/main/notebook/dp_budget.ipynb?short_path=ab58a17) encargada de darnos el ruido necesitado dado un $\epsilon$ elegido para la generación privada. 
 
 Y por último el [main.py](https://github.com/AI-secure/aug-pe/blob/main/main.py) donde se define el algoritmo de generación.
