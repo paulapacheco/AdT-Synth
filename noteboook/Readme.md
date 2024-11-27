@@ -1,7 +1,7 @@
 # Adaptación de aug-pe
 En la notebook hicimos una adaptación de la libreria [aug-pe](https://github.com/AI-secure/aug-pe) guiándonos en mayor parte por el diseño para los datos de pubmed, los más parecidos a los del Archivo del Terror.
 
-En primer lugar está la carpeta [apis](https://github.com/AI-secure/aug-pe/tree/main/apis) de donde tomamos 
+En la primera parte del cuaderno adaptamos la carpeta [apis](https://github.com/AI-secure/aug-pe/tree/main/apis) de donde tomamos 
 - api.py - Donde se define la clase API
 - hf_api.py - Donde redefine la clase API para la utilización de modelos abiertos de hugging face. Encargada de definir la generación y variación de textos.
 - utils.py - Donde se definen los prompts de variación.
@@ -15,6 +15,6 @@ Luego seguimos con la carpeta  [dpsda](https://github.com/AI-secure/aug-pe/tree/
 
 En **Noise Level Calculation**, adaptamos la [notebook](https://github.com/AI-secure/aug-pe/blob/main/notebook/dp_budget.ipynb?short_path=ab58a17) encargada de darnos el ruido necesitado dado un $\epsilon$ elegido para la generación privada. 
 
-Luego [main.py](https://github.com/AI-secure/aug-pe/blob/main/main.py) donde se define el algoritmo de generación.
+Seguimos con [main.py](https://github.com/AI-secure/aug-pe/blob/main/main.py) donde se define el algoritmo de generación.
 
 Por ultimo definimos una clase Argumentos por haber quitado el parser para usar en colab.
