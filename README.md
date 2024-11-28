@@ -69,10 +69,14 @@ Indagando en [Opacus](https://opacus.ai/), librería encargada de dotar la priva
   - *RANDOM_API*: Genera $n$ muestras sintéticas con un modelo de lenguaje.
   - *DP_NN_HISTOGRAM*: Cada muestra privada vota por los documentos sintéticos más cercanos en un espacio donde son embebidos. Añade luego ruido Gaussiano a los votos pra asegurar DP.
   - *VARIATION_API*: Hace variaciones de los documentos sintéticos generados inicialmente.
-  
-  Una vez generados los datos sintéticos inicales RANDOM_API luego se itera sobre DP_NN_HISTOGRAM y VARIATION_API la cantidad de iteraciones deseada.
 
-  Cabe destacar que, al ser la privacidad asegurada 'por fuera' de la generación, este algoritmo sólo solicita los pasos de inferencia de los modelos de lenguaje. Es por ello que, si tenemos acceso, podremos utilizar aun modelos de lenguaje cerrados. También resulta más eficiente, si la cantidad $n$ de muestras generadas no es gigante, este metodo para modelos abiertos con muchos parámetros en comparación al finetune con DP.
+	 <p align="center">
+	  <img src="alg.png" width="65%">
+	</p>
+		
+	Una vez generados los datos sintéticos inicales RANDOM_API luego se itera sobre DP_NN_HISTOGRAM y VARIATION_API la cantidad de iteraciones deseada.
+	
+	Cabe destacar que, al ser la privacidad asegurada 'por fuera' de la generación, este algoritmo sólo solicita los pasos de inferencia de los modelos de lenguaje. Es por ello que, si tenemos acceso, podremos utilizar aun modelos de lenguaje cerrados. También resulta más eficiente, si la cantidad $n$ de muestras generadas no es gigante, este metodo para modelos abiertos con muchos parámetros en comparación al finetune con DP.
   Debemos elegir entonces un modelo de lenguaje para generación, un modelo de sentence tranformer para relizar los embeddings y  un adecuado diseño de prompts para la generación y variación.  
 
   Para el modelo de generación de texto buscamos uno que soporte instrucciones para desarrollar mejor la tarea. Primero elegimos [Lama 3.2 1B Instruct](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct), pero notamos que por mas de ser miltiligual, la generación terminaba siendo puramente en inglés. Para lograr la generación en español encontramos un [Llama 7B Instruct  es](https://huggingface.co/clibrain/Llama-2-7b-ft-instruct-es) finetuneado para español. Para el sentence tranformer elegimos primero [Sentence Transformer Paraphrase Multilingual](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2) y luego,  análogamente a lo anterior, terminamos decantando por uno específicamente para el español  [Sentence Similarity Spanish](https://huggingface.co/hiiamsid/sentence_similarity_spanish_es). 
@@ -95,16 +99,16 @@ Indagando en [Opacus](https://opacus.ai/), librería encargada de dotar la priva
 	
   - 'Texto'  que aparece justo antes de los informe
  
-<p align="center">
-  <img src="split.png" width="65%">
-</p>
-
+	<p align="center">
+	  <img src="split.png" width="65%">
+	</p>
+	
   Como dijimos, el ruido ya lo consideramos fuera de nuestro alcance, por lo tanto, antes de dividir, porcedimos a eliminar las stopwords y minuscular. Una vez hecha esa división[^5] según las palabras 'clave' con el  [CharacterTextSplitter](	https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.CharacterTextSplitter.html#) (de langachain) seguimos subdividiendo cada una de ellas con el [RecursiveCharacterTextSplitter](https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#) hasta que todos los mini chunks tuvieran una longitud menor a 500. Resultando en $\sim 35000$ documentos distintos.
 
 
   El prompt inicial de generación estaba mal hecho, no es un informante el que escribe, sino más bien una transcripción por ello los cambiamos por:
 
-	> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
+		> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
 	
   Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen mínimo $n=2000$), los resultados con esta cantidad son poco prometedores, y como es esperable, a medida que más iteraciones hacíamos, peor eran los datos sintéticos generados.
 Para intentar mejorar la cantidad de samples $n$ y la cantidad iteraciones de variación intentamos usar los nuevos recursos obtenidos con Jupyter del CCAD pero por problemas de compatibilidad no pudimos lograrlo.
