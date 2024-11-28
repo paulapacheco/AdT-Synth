@@ -71,8 +71,10 @@ Indagando en [Opacus](https://opacus.ai/), librería encargada de dotar la priva
   - *VARIATION_API*: Hace variaciones de los documentos sintéticos generados inicialmente.
 
 	 <p align="center">
-	  <img src="alg.png" width="65%">
+	  <img src="alg.png" width="75%">
 	</p>
+	
+	> Esquema del algoritmo aug-pe. Figura 2 del articulo [^3]
 		
 	Una vez generados los datos sintéticos inicales RANDOM_API luego se itera sobre DP_NN_HISTOGRAM y VARIATION_API la cantidad de iteraciones deseada.
 	
