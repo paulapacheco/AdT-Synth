@@ -104,7 +104,7 @@ Indagando en [Opacus](https://opacus.ai/), librería encargada de dotar la priva
 
   El prompt inicial de generación estaba mal hecho, no es un informante el que escribe, sino más bien una transcripción por ello los cambiamos por:
 
-    	> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
+	> 'Sos un policia espia. Por sospechas de subversivos fuentes anonimas te informan sobre intinerarios o movimientos de vecinos o conocidos. Escribi una transcripción un informe que te entrego un informante privado.'
 	
   Dados los recursos disponibles hasta la fecha, nos acotamos a la generación de a lo sumo $n=4$ muestras iniciales (en el articulo hacen mínimo $n=2000$), los resultados con esta cantidad son poco prometedores, y como es esperable, a medida que más iteraciones hacíamos, peor eran los datos sintéticos generados.
 Para intentar mejorar la cantidad de samples $n$ y la cantidad iteraciones de variación intentamos usar los nuevos recursos obtenidos con Jupyter del CCAD pero por problemas de compatibilidad no pudimos lograrlo.
