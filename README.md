@@ -88,6 +88,10 @@ Indagando en [Opacus](https://opacus.ai/), librería encargada de dotar la priva
 	
   - 'Texto'  que aparece justo antes de los informes
 
+<p align="center">
+  <img src="split.png" width="100%">
+</p>
+
   Como dijimos, el ruido ya lo consideramos fuera de nuestro alcance, por lo tanto, antes de dividir, porcedimos a eliminar las stopwords y minuscular. Una vez hecha esa división[^5] según las palabras 'clave' con el  [CharacterTextSplitter](	https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.CharacterTextSplitter.html#) (de langachain) seguimos subdividiendo cada una de ellas con el [RecursiveCharacterTextSplitter](https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#) hasta que todos los mini chunks tuvieran una longitud menor a 500. Resultando en $\sim 35000$ documentos distintos.
 
 
