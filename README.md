@@ -1,4 +1,3 @@
-
 # Generación de datos sintéticos a partir de documentos del Archivo del Terror
 
 ## Resumen
@@ -16,7 +15,7 @@ Y una hipótesis a posteriori, suponiendo una razonable generación de datos sin
 2. La metodología de generación es extensible a otros datos del mismo domino. Por ejemplo el Archivo de la Memoria de Argentina.
 
 ## Objetivos preliminares y revisión:
-- **Generación de Datos Sintéticos**: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay. Evaluando en primer lugar la comparabilidad entre los datos sintéticos y el archivo de memoria de Argentina. Y la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
+- **Generación de Datos Sintéticos**: Crear archivos sintéticos que preserven las propiedades de los documentos originales del Archivo del Terror de Uruguay evaluando la preservacion de distintas distribuciones subyacentes en los datos originales ya sea a nivel caracteres, palabras, entidades, entre otros.
 
   La generación de un un nuevo archivo sintético ha sido abandonada debido a los pobres resultados obtenidos, no obstante, realizamos minúsculas tareas de inspección para evaluar los métodos de generación de texto y recursos a disposición:
   - Explorar si hay buenos resultados con la libreria aug-pe, detallado en la seccion metodologia, para algun dataset en ingles y/o español con textos mas 'limpios' que el Archivo del Terror. 
